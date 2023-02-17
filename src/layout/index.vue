@@ -2,7 +2,7 @@
   <div class="">Layout 页面</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import {} from 'vue'
 </script>
 

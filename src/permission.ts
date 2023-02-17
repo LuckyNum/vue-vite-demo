@@ -1,6 +1,5 @@
 import router from '@/router'
 import { useUserStore } from '@/stores/modules/user'
-import { storeToRefs } from 'pinia'
 // 白名单
 const whiteList = ['/login']
 
@@ -10,7 +9,6 @@ const whiteList = ['/login']
 router.beforeEach(async (to, from, next) => {
   // 存在 token ，进入主页
   const { token } = useUserStore()
-  console.log(token)
   // 快捷访问
   if (token) {
     if (to.path === '/login') {
