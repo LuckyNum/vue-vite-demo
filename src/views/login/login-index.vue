@@ -1,6 +1,11 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" :model="loginForm" :rules="loginRules">
+    <el-form
+      class="login-form"
+      :model="loginForm"
+      :rules="loginRules"
+      ref="loginFromRef"
+    >
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
@@ -24,15 +29,20 @@
           v-model="loginForm.password"
           placeholder="password"
           name="password"
+          :type="passwordType"
         />
         <span class="show-pwd">
-          <el-icon>
-            <Hide />
-          </el-icon>
+          <el-icon v-if="passwordType === 'password'" @click="onChangePwdType"
+            ><Hide
+          /></el-icon>
+          <el-icon v-else @click="onChangePwdType"><View /></el-icon>
         </span>
       </el-form-item>
-
-      <el-button type="primary" style="width: 100%; margin-bottom: 30px"
+      <el-button
+        type="primary"
+        style="width: 100%; margin-bottom: 30px"
+        :loading="loginLoading"
+        @click="handleLogin"
         >登录</el-button
       >
     </el-form>
@@ -64,6 +74,38 @@ const loginRules = ref({
     }
   ]
 })
+// 处理密码框文本显示状态
+const passwordType = ref('password')
+const onChangePwdType = () => {
+  if (passwordType.value === 'password') {
+    passwordType.value = 'text'
+  } else {
+    passwordType.value = 'password'
+  }
+}
+
+// 登录动作处理
+import { useUserStore } from '@/stores/modules/user'
+const userStore = useUserStore()
+const loginLoading = ref(false)
+const loginFromRef = ref()
+const handleLogin = () => {
+  loginFromRef.value.validate((valid) => {
+    if (!valid) return
+    loginLoading.value = true
+    const { username, password } = loginForm.value
+    userStore
+      .loginAction(username, password)
+      .then(() => {
+        loginLoading.value = false
+        // TODO 登录后操作
+      })
+      .catch((err) => {
+        console.log(err)
+        loginLoading.value = false
+      })
+  })
+}
 </script>
 
 <style lang="scss" scoped>
