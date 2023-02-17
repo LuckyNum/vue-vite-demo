@@ -19,7 +19,9 @@
             <a target="_blank" href="">
               <el-dropdown-item>课程主页</el-dropdown-item>
             </a>
-            <el-dropdown-item divided> 退出登录 </el-dropdown-item>
+            <el-dropdown-item divided @click="logout">
+              退出登录
+            </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -30,7 +32,10 @@
 <script setup>
 import { useUserStore } from '@/stores/modules/user'
 const userStore = useUserStore()
-console.log(userStore.userData)
+
+const logout = () => {
+  userStore.logoutAction()
+}
 </script>
 
 <style lang="scss" scoped>

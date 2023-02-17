@@ -1,7 +1,7 @@
 import { ref, watch } from 'vue'
 import { defineStore } from 'pinia'
 import { login, getUserInfo } from '@/api/sys'
-import { setItem, getItem } from '@/utils/storage'
+import { setItem, getItem, removeAllItem } from '@/utils/storage'
 import { TOKEN } from '@/utils/constant'
 // @ts-ignore
 import md5 from 'md5'
@@ -42,5 +42,12 @@ export const useUserStore = defineStore('user', () => {
     return res
   }
 
-  return { token, userData, loginAction, getUserInfoAction }
+  const logoutAction = () => {
+    token.value = ''
+    userData.value = {}
+    removeAllItem()
+    router.push('/login')
+  }
+
+  return { token, userData, loginAction, getUserInfoAction, logoutAction }
 })
