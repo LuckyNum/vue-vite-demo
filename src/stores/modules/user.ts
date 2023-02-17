@@ -1,6 +1,6 @@
 import { ref, watch } from 'vue'
 import { defineStore } from 'pinia'
-import { login } from '@/api/sys'
+import { login, getUserInfo } from '@/api/sys'
 import { setItem, getItem } from '@/utils/storage'
 import { TOKEN } from '@/utils/constant'
 // @ts-ignore
@@ -36,5 +36,11 @@ export const useUserStore = defineStore('user', () => {
     })
   }
 
-  return { token, userData, loginAction }
+  const getUserInfoAction = async () => {
+    const res = await getUserInfo()
+    userData.value = res
+    return res
+  }
+
+  return { token, userData, loginAction, getUserInfoAction }
 })

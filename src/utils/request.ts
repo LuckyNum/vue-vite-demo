@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import { useUserStore } from '@/stores/modules/user'
 
 const service = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -9,7 +10,13 @@ const service = axios.create({
 // 请求拦截器
 service.interceptors.request.use(
   (config) => {
+    const userStore = useUserStore()
+    // 在这个位置需要统一的去注入token
     config.headers.icode = '2A64CDF853F23F2F'
+    if (userStore.token) {
+      // 如果token存在 注入token
+      config.headers.Authorization = `Bearer ${userStore.token}`
+    }
     return config // 必须返回配置
   },
   (error) => {

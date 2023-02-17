@@ -1,4 +1,7 @@
-@import './base.scss';
+@import './variables.module.scss';
+@import './mixin.scss';
+@import './sidebar.scss';
+@import './element.scss';
 
 html,
 body {
@@ -9,7 +12,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
-  Microsoft YaHei, Arial, sans-serif;
+    Microsoft YaHei, Arial, sans-serif;
 }
 
 #app {
@@ -42,12 +45,12 @@ div:focus {
 }
 
 .clearfix {
-&:after {
-   visibility: hidden;
-   display: block;
-   font-size: 0;
-   content: ' ';
-   clear: both;
-   height: 0;
- }
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: ' ';
+    clear: both;
+    height: 0;
+  }
 }
