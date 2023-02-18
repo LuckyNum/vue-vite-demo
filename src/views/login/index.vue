@@ -52,7 +52,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { validatePassword } from './rules'
-import { useUserStore } from '@/stores/modules/user'
+import appStore from '@/stores'
 // 数据源
 const loginForm = ref({
   username: 'super-admin',
@@ -86,7 +86,6 @@ const onChangePwdType = () => {
 }
 
 // 登录动作处理
-const userStore = useUserStore()
 const loginLoading = ref(false)
 const loginFromRef = ref()
 const handleLogin = () => {
@@ -94,7 +93,7 @@ const handleLogin = () => {
     if (!valid) return
     loginLoading.value = true
     const { username, password } = loginForm.value
-    userStore
+    appStore.userStore
       .loginAction(username, password)
       .then(() => {
         loginLoading.value = false

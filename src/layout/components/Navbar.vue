@@ -7,7 +7,7 @@
           <el-avatar
             shape="square"
             :size="40"
-            :src="userStore.userData.avatar"
+            :src="appStore.userStore.userData.avatar"
           ></el-avatar>
           <i class="el-icon-s-tools"></i>
         </div>
@@ -30,11 +30,10 @@
 </template>
 
 <script setup>
-import { useUserStore } from '@/stores/modules/user'
-const userStore = useUserStore()
+import appStore from '@/stores'
 
 const logout = () => {
-  userStore.logoutAction()
+  appStore.userStore.logoutAction()
 }
 </script>
 

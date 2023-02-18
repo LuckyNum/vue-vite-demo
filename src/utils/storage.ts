@@ -1,7 +1,7 @@
 /**
  * 存储数据
  */
-export const setItem = (key: string, value: string) => {
+export const setItem = (key: string, value: any) => {
   // 将数组、对象类型的数据转化为 JSON 字符串进行存储
   if (typeof value === 'object') {
     value = JSON.stringify(value)

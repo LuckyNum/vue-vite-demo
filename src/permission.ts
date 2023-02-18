@@ -1,5 +1,5 @@
 import router from '@/router'
-import { useUserStore } from '@/stores/modules/user'
+import appStore from '@/stores'
 // 白名单
 const whiteList = ['/login']
 
@@ -8,7 +8,7 @@ const whiteList = ['/login']
  */
 router.beforeEach(async (to, from, next) => {
   // 存在 token ，进入主页
-  const { token, userData, getUserInfoAction } = useUserStore()
+  const { token, userData, getUserInfoAction } = appStore.userStore
   // 快捷访问
   if (token) {
     if (to.path === '/login') {

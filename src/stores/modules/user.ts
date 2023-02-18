@@ -6,6 +6,7 @@ import { TOKEN } from '@/utils/constant'
 // @ts-ignore
 import md5 from 'md5'
 import router from '@/router'
+import { setTimeStamp } from '@/utils/auth'
 
 export const useUserStore = defineStore('user', () => {
   const token = ref(getItem(TOKEN))
@@ -26,6 +27,8 @@ export const useUserStore = defineStore('user', () => {
       })
         .then((data: any) => {
           token.value = data.token
+          //保存登录时间
+          setTimeStamp()
           resolve(data)
           // 登录后操作
           router.push('/')
