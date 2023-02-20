@@ -1,14 +1,13 @@
-//处理 `menu` 菜单的样式
 #app {
   .main-container {
     min-height: 100%;
-    transition: margin-left 0.28s;
+    transition: margin-left #{$sideBarDuration};
     margin-left: $sideBarWidth;
     position: relative;
   }
 
   .sidebar-container {
-    transition: width 0.28s;
+    transition: width #{$sideBarDuration};
     width: $sideBarWidth !important;
     height: 100%;
     position: fixed;
@@ -21,7 +20,7 @@
     // 重置 element-plus 的css
     .horizontal-collapse-transition {
       transition: 0s width ease-in-out, 0s padding-left ease-in-out,
-      0s padding-right ease-in-out;
+        0s padding-right ease-in-out;
     }
 
     .scrollbar-wrapper {
@@ -54,6 +53,13 @@
 
     .svg-icon {
       margin-right: 16px;
+    }
+
+    // 在 menu 收起时，取消 margin-left
+    .el-menu--collapse {
+      .svg-icon {
+        margin-right: 0px;
+      }
     }
 
     .sub-el-icon {

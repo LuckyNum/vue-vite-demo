@@ -1,11 +1,12 @@
 <template>
   <!-- 一级 menu 菜单 -->
   <el-menu
-    :uniqueOpened="true"
+    :collapse="!appStore.applicationStore.sidebarOpened"
     :default-active="activeMenu"
     :background-color="appStore.themeStore.cssVar.menuBg"
     :text-color="appStore.themeStore.cssVar.menuText"
     :active-text-color="appStore.themeStore.cssVar.menuActiveText"
+    :uniqueOpened="true"
     router
   >
     <sidebar-item
