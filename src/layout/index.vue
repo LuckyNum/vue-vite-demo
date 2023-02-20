@@ -1,25 +1,29 @@
 <template>
-  <div
-    class="app-wrapper"
-    :class="[
-      appStore.applicationStore.sidebarOpened ? 'openSidebar' : 'hideSidebar'
-    ]"
+  <el-config-provider
+    :locale="appStore.applicationStore.language === 'en' ? en : zhCn"
   >
-    <!-- 左侧 menu -->
-    <sidebar
-      id="guide-sidebar"
-      class="sidebar-container"
-      :style="{ backgroundColor: appStore.themeStore.cssVar.menuBg }"
-    />
-    <div class="main-container">
-      <div class="fixed-header">
-        <!-- 顶部的 navbar -->
-        <navbar />
+    <div
+      class="app-wrapper"
+      :class="[
+        appStore.applicationStore.sidebarOpened ? 'openSidebar' : 'hideSidebar'
+      ]"
+    >
+      <!-- 左侧 menu -->
+      <sidebar
+        id="guide-sidebar"
+        class="sidebar-container"
+        :style="{ backgroundColor: appStore.themeStore.cssVar.menuBg }"
+      />
+      <div class="main-container">
+        <div class="fixed-header">
+          <!-- 顶部的 navbar -->
+          <navbar />
+        </div>
+        <!-- 内容区 -->
+        <app-main />
       </div>
-      <!-- 内容区 -->
-      <app-main />
     </div>
-  </div>
+  </el-config-provider>
 </template>
 
 <script setup lang="ts">
@@ -28,6 +32,8 @@ import Sidebar from '@/layout/components/Sidebar/Sidebar.vue'
 import AppMain from '@/layout/components/AppMain.vue'
 import variables from '@/assets/variables.module.scss'
 import appStore from '@/stores'
+import en from 'element-plus/lib/locale/lang/en'
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
 </script>
 
 <style lang="scss" scoped>

@@ -25,12 +25,4 @@ import {} from 'vue'
   padding: 61px 20px 20px 20px;
   box-sizing: border-box;
 }
-.app-content {
-  height: calc(100vh - 80px);
-  width: 100%;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 1);
-  box-shadow: 2px 2px 2px 0 blue;
-  border: 1px solid gray;
-}
 </style>

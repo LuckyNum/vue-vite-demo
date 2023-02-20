@@ -7,7 +7,7 @@
         src="https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png"
       />
       <h1 class="logo-title" v-if="appStore.applicationStore.sidebarOpened">
-        花生Admin
+        peanut-admin
       </h1>
     </div>
     <el-scrollbar>

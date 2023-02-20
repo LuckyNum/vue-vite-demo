@@ -10,6 +10,7 @@ import './permission'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import 'virtual:svg-icons-register'
 import { registerStore } from '@/stores'
+import i18n from '@/i18n'
 
 const app = createApp(App)
 // Pinia
@@ -24,6 +25,8 @@ app.use(ElementPlus)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
+// 多语言
+app.use(i18n)
 // svg icons
 app.component('svg-icon', SvgIcon)
 
