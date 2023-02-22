@@ -22,7 +22,6 @@
         <!-- 内容区 -->
         <app-main />
       </div>
-      <statusbar></statusbar>
     </div>
   </el-config-provider>
 </template>
@@ -34,7 +33,6 @@ import AppMain from '@/layout/components/AppMain.vue'
 import appStore from '@/stores'
 import en from 'element-plus/lib/locale/lang/en'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
-import Statusbar from '@/layout/components/Statusbar.vue'
 </script>
 
 <style lang="scss" scoped>
