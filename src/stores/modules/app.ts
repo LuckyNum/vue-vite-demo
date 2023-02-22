@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, watch } from 'vue'
-import { LANG, TOKEN } from '@/utils/constant'
+import { LANG } from '@/utils/constant'
 import { getItem, setItem } from '@/utils/storage'
 
 export const useAppStore = defineStore('app', () => {
@@ -8,7 +8,6 @@ export const useAppStore = defineStore('app', () => {
   const sidebarOpened = ref(true)
   // 多语言
   const language = ref(getItem(LANG) || 'zh')
-
   /**
    * 监听language的变化，存储到localStorage
    */

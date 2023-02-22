@@ -6,7 +6,7 @@
   >
     <div>
       <el-tooltip :content="$t('msg.navBar.lang')" :effect="effect">
-        <svg-icon icon="language" />
+        <svg-icon id="guide-lang" icon="language" />
       </el-tooltip>
     </div>
     <template #dropdown>
@@ -22,17 +22,17 @@
   </el-dropdown>
 </template>
 
-<script setup>
-import { useI18n } from 'vue-i18n'
-import { computed } from 'vue'
-import { ElMessage } from 'element-plus'
+<script setup lang="ts">
 import appStore from '@/stores'
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { ElMessage } from 'element-plus'
 
 defineProps({
   effect: {
     type: String,
     default: 'dark',
-    validator: function (value) {
+    validator: function (value: string) {
       // 这个值必须匹配下列字符串中的一个
       return ['dark', 'light'].indexOf(value) !== -1
     }
@@ -43,7 +43,7 @@ const language = computed(() => appStore.applicationStore.language)
 
 // 切换语言的方法
 const i18n = useI18n()
-const handleSetLanguage = (lang) => {
+const handleSetLanguage = (lang: any) => {
   i18n.locale.value = lang
   appStore.applicationStore.language = lang
   ElMessage.success(i18n.t('msg.toast.switchLangSuccess'))

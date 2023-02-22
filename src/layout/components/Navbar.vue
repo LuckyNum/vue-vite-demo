@@ -2,6 +2,9 @@
   <div class="navbar">
     <hamburger class="hamburger-container" />
     <div class="right-menu">
+      <guide class="right-menu-item hover-effect" />
+      <screenfull class="right-menu-item hover-effect" />
+      <theme-select class="right-menu-item hover-effect" />
       <lang-select class="right-menu-item hover-effect" />
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
@@ -31,10 +34,13 @@
   </div>
 </template>
 
-<script setup>
-import appStore from '@/stores'
+<script setup lang="ts">
 import Hamburger from '@/components/Hamburger/index.vue'
 import LangSelect from '@/components/LangSelect/index.vue'
+import ThemeSelect from '@/components/ThemeSelect/index.vue'
+import Screenfull from '@/components/Screenfull/index.vue'
+import Guide from '@/components/Guide/index.vue'
+import appStore from '@/stores'
 
 const logout = () => {
   appStore.userStore.logoutAction()

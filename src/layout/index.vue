@@ -22,6 +22,7 @@
         <!-- 内容区 -->
         <app-main />
       </div>
+      <statusbar></statusbar>
     </div>
   </el-config-provider>
 </template>
@@ -30,10 +31,10 @@
 import Navbar from '@/layout/components/Navbar.vue'
 import Sidebar from '@/layout/components/Sidebar/Sidebar.vue'
 import AppMain from '@/layout/components/AppMain.vue'
-import variables from '@/assets/variables.module.scss'
 import appStore from '@/stores'
 import en from 'element-plus/lib/locale/lang/en'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
+import Statusbar from '@/layout/components/Statusbar.vue'
 </script>
 
 <style lang="scss" scoped>

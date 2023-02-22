@@ -12,7 +12,7 @@ export const setItem = (key: string, value: any) => {
 /**
  * 获取数据
  */
-export const getItem = (key: string) => {
+export function getItem(key: string): string {
   const data = window.localStorage.getItem(key) || ''
   try {
     return JSON.parse(data)

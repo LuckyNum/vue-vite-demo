@@ -1,7 +1,8 @@
 import { createI18n } from 'vue-i18n'
 import mZhLocale from './lang/zh'
 import mEnLocale from './lang/en'
-import appStore from '@/stores'
+import { getItem } from '@/utils/storage'
+import { LANG } from '@/utils/constant'
 
 const messages = {
   en: {
@@ -17,7 +18,8 @@ const messages = {
 }
 
 const getLanguage = () => {
-  return appStore.applicationStore && appStore.applicationStore.language
+  // TODO：这个时候pinia还没有加载，无法调用appStore。如何解决？
+  return getItem(LANG) ? getItem(LANG) : 'zh'
 }
 
 const i18n = createI18n({
